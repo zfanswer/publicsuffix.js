@@ -1,6 +1,11 @@
-var assert = require('assert');
-var publicsuffix = require('./publicsuffix');
-
+/*
+ * Modified by: Fan
+ * Modified date: 2012-5-13
+ * How to use:
+ * 1.Please include the publicsuffix.js in the <head> of your html file.
+ * 2.Get the url without http:// or https:// (Just like the examples below).
+ * 3.Call the function parsedomain(url) and get the returned object.
+ */
 
 var tests =
   [ [ 'jp', { publicSuffix: 'jp' } ]
@@ -38,7 +43,9 @@ var i, netloc, parsed, expected;
 for (i = 0; i < tests.length; ++i) {
   netloc = tests[i][0];
   expected = tests[i][1];
-  parsed = publicsuffix.parse(netloc);
-  assert.deepEqual(parsed, expected);
+  parsed = parsedomain(netloc);
+  
+  console.log(parsed);
 }
+
 console.log('' + tests.length + ' tests passed.');
